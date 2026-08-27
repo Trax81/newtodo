@@ -1,28 +1,32 @@
 const list = document.querySelector('.list')
-
-
-let todoList = [
-    {
-        id: 1,
-        task: 'Finish Frontend Simplified'
-    },
-    {   id: 2,
-        task: 'Finish Interview Questions'
-    },
-    {   id: 3,
-        task: 'Land $100k job'
-    }
-];
-
+const input = document.querySelector('input')
+let todoList = []
 let todoInputValue = '';
+
+
+
 function onInputChange(event) {
     todoInputValue = event.target.value
 }
 
 
 function addTodo() {
-    console.log('@@')
+    if (!todoInputValue) {
+        return;
+    }
+
+
+    const task = {
+        id: Math.floor(Math.random() * 10000),
+        task: todoInputValue
+    }
+    todoList.push(task);
+    renderTodos()
+    input.value = ''
+    todoInputValue = ''
 }
+
+
 
 
 function deleteTodo(id) {
